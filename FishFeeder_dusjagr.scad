@@ -41,7 +41,7 @@ $fn=100;
 
 //rotate([0,0,$t*-360]) 
 //translate([0, 50, 2]) dusjagrScrew();
-translate([0, 0, 1]) becekScrew();
+//translate([0, 0, 1]) becekScrew();
 color("magenta") translate([0, 0, 18.0]) pipeHolder();
 motorHolder();
 
@@ -129,23 +129,23 @@ module motorServoMG996R (){
 
 module pipeHolder() {
     //Pipe Connection
+  difference(){
+    union(){
     difference(){
-        translate([0, 0, 5]) cylinder(h=8,d=pipeOuterD+4, center =true);
-        translate([0, 0, 5]) cylinder(h=8.2,d1=0.99*pipeOuterD,d2=1.02*pipeOuterD, center =true);
-        translate([-pipeOuterD/2, 0, -8]) rotate([0,90,0]) cylinder(h=20,d=19, center =true);
-    }
+        translate([0, 0, 9]) cylinder(h=14,d=pipeOuterD+4, center =true);
+        translate([0, 0, 9]) cylinder(h=14.4,d1=0.99*pipeOuterD,d2=1.02*pipeOuterD, center =true);
+        }
     //Pipe Entry
     difference(){
         translate([0, 0, -8]) cylinder(h=22,d1=pipeOuterD+1,d2=pipeOuterD+4, center =true);
         translate([0, 0, -8]) cylinder(h=22.2,d=pipeInnerD, center =true);
-        translate([-pipeOuterD/2, 0, -8]) rotate([0,90,0]) cylinder(h=20,d=19, center =true);
+        }
         
-    }
     //Funnel
   difference(){
-    translate([-pipeOuterD/2+14, 0, 4]) union(){
+    translate([-pipeOuterD/2+13, 0, 6]) union(){
     difference(){
-        translate([-31, 0, -9]) rotate([0,104,0]) cylinder(h=42,d1=36.5,d2=20, center =true);
+        translate([-31, 0, -9]) rotate([0,103,0]) cylinder(h=42,d1=36.5,d2=23, center =true);
         translate([-30, 0, -9]) rotate([0,103,0]) cylinder(h=40.2,d1=36.5-8,d2=20-4, center =true);
    
         //cut the top
@@ -159,10 +159,11 @@ module pipeHolder() {
         translate([-46, 0, -5.5]) rotate([180,90,0]) cylinder(h=20.2,d=26, center =true, $fn=50);
         }
     }
-    translate([-2, 0, -2]) cylinder(h=8.2,d1=0.99*pipeOuterD,d2=1.02*pipeOuterD, center =true);
-    translate([-pipeOuterD/2, 0, -8]) rotate([0,90,0]) cylinder(h=20,d=19, center =true);
-    translate([-2, 0, -1]) cylinder(h=5.2,d1=pipeOuterD,d2=pipeOuterD+0.2, center =true);
-    translate([-2, 0, -9]) cylinder(h=20.2,d=pipeInnerD, center =true);
+    translate([0, 0, 5]) cylinder(h=8.2,d1=0.99*pipeOuterD,d2=1.02*pipeOuterD, center =true);
+    translate([0, 0, -9]) cylinder(h=22.2,d=pipeInnerD, center =true);
+  }
+  }
+  translate([-pipeOuterD/2, 0, -6.5]) rotate([0,103,0]) cylinder(h=60,d=18, center =true);
   }
 }
 
